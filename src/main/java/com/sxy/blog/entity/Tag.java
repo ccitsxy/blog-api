@@ -5,8 +5,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "tag")
@@ -16,7 +15,7 @@ public class Tag {
     @Column(name = "tid")
     private Integer tid;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @Column(name = "count")
@@ -34,7 +33,7 @@ public class Tag {
     @JoinTable(name = "article_tag"
             , joinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")}
             , inverseJoinColumns = {@JoinColumn(name = "aid", referencedColumnName = "aid")})
-    private Set<Article> articles = new LinkedHashSet<>();
+    private List<Article> articles;
 
     public Integer getTid() {
         return this.tid;
@@ -56,7 +55,7 @@ public class Tag {
         return this.updated;
     }
 
-    public Set<Article> getArticles() {
+    public List<Article> getArticles() {
         return this.articles;
     }
 
@@ -80,7 +79,7 @@ public class Tag {
         this.updated = updated;
     }
 
-    public void setArticles(Set<Article> articles) {
+    public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
 }
