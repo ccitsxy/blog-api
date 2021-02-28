@@ -31,6 +31,7 @@ spring:
   jpa:
     # 显示sql
     show-sql: true
+    open-in-view: false
     hibernate:
       # 自动生成表结构
       ddl-auto: update
