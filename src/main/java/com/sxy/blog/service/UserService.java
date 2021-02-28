@@ -20,4 +20,12 @@ public class UserService {
     public List<User> findAll(){
         return userRepository.findAll();
     }
+    @GetMapping("user/save")
+    public User save() {
+        User user = new User();
+        user.setUsername("admin");
+        user.setPassword("123456");
+        userRepository.save(user);
+        return user;
+    }
 }
