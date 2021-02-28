@@ -1,15 +1,14 @@
 package com.sxy.blog.entity;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
 
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 @Entity
 @Table(name = "tag")
-public class Tag {
+public class Tag extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tid")
@@ -20,14 +19,6 @@ public class Tag {
 
     @Column(name = "count")
     private Integer count;
-
-    @CreationTimestamp
-    @Column(name = "created")
-    private LocalDateTime created;
-
-    @UpdateTimestamp
-    @Column(name = "updated")
-    private LocalDateTime updated;
 
     @ManyToMany(targetEntity = Article.class)
     @JoinTable(name = "article_tag"
@@ -47,14 +38,6 @@ public class Tag {
         return this.count;
     }
 
-    public LocalDateTime getCreated() {
-        return this.created;
-    }
-
-    public LocalDateTime getUpdated() {
-        return this.updated;
-    }
-
     public List<Article> getArticles() {
         return this.articles;
     }
@@ -69,14 +52,6 @@ public class Tag {
 
     public void setCount(Integer count) {
         this.count = count;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
-    public void setUpdated(LocalDateTime updated) {
-        this.updated = updated;
     }
 
     public void setArticles(List<Article> articles) {
