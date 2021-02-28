@@ -1,15 +1,14 @@
 package com.sxy.blog.entity;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
 
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 @Entity
 @Table(name = "article")
-public class Article {
+public class Article extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "aid")
@@ -23,14 +22,6 @@ public class Article {
 
     @Column(name = "html", columnDefinition = "longtext")
     private String html;
-
-    @CreationTimestamp
-    @Column(name = "created")
-    private LocalDateTime created;
-
-    @UpdateTimestamp
-    @Column(name = "updated")
-    private LocalDateTime updated;
 
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "cid", referencedColumnName = "cid")
@@ -48,7 +39,6 @@ public class Article {
 
     public String getTitle() {
         return this.title;
-
     }
 
     public String getMarkdown() {
@@ -57,14 +47,6 @@ public class Article {
 
     public String getHtml() {
         return this.html;
-    }
-
-    public LocalDateTime getCreated() {
-        return this.created;
-    }
-
-    public LocalDateTime getUpdated() {
-        return this.updated;
     }
 
     public Category getCategory() {
@@ -83,21 +65,12 @@ public class Article {
         this.title = title;
     }
 
-
     public void setMarkdown(String markdown) {
         this.markdown = markdown;
     }
 
     public void setHtml(String html) {
         this.html = html;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
-    public void setUpdated(LocalDateTime updated) {
-        this.updated = updated;
     }
 
     public void setCategory(Category category) {
