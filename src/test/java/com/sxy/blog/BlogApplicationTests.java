@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
+
 @SpringBootTest
 class BlogApplicationTests {
 
@@ -22,6 +24,9 @@ class BlogApplicationTests {
         user.setUsername("admin");
         user.setPassword("123456");
         userRepository.save(user);
+        User user1 = userRepository.getOne(1);
+        user1.setUsername("test");
+        userRepository.save(user1);
     }
 
 }
