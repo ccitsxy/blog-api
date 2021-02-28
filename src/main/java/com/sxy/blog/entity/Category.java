@@ -1,15 +1,15 @@
 package com.sxy.blog.entity;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 @Entity
 @Table(name = "category")
-public class Category {
+public class Category extends Base{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +22,9 @@ public class Category {
     @Column(name = "count")
     private Integer count;
 
-    @CreationTimestamp
     @Column(name = "created")
     private LocalDateTime created;
 
-    @UpdateTimestamp
     @Column(name = "updated")
     private LocalDateTime updated;
 
