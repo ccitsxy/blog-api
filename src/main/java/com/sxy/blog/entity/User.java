@@ -1,16 +1,14 @@
 package com.sxy.blog.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 @Entity
 @Table(name = "user")
-public class User {
+public class User extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "uid")
@@ -22,16 +20,6 @@ public class User {
     @JsonIgnore
     @Column(name = "password")
     private String password;
-
-    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-    @CreationTimestamp
-    @Column(name = "created")
-    private LocalDateTime created;
-
-    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-    @UpdateTimestamp
-    @Column(name = "updated")
-    private LocalDateTime updated;
 
     public Integer getUid() {
         return this.uid;
@@ -45,14 +33,6 @@ public class User {
         return this.password;
     }
 
-    public LocalDateTime getCreated() {
-        return this.created;
-    }
-
-    public LocalDateTime getUpdated() {
-        return this.updated;
-    }
-
     public void setUid(Integer uid) {
         this.uid = uid;
     }
@@ -63,13 +43,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
-    public void setUpdated(LocalDateTime updated) {
-        this.updated = updated;
     }
 }
