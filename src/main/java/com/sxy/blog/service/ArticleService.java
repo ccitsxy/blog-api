@@ -12,11 +12,16 @@ public class ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
 
+    public Page<Article> findAll(Pageable pageable) {
+        return articleRepository.findAll(pageable);
+    }
+
     public Article getArticleByAid(Integer aid) {
         return articleRepository.getArticleByAid(aid);
     }
 
-    public Page<Article> findAll(Pageable pageable) {
-        return articleRepository.findAll(pageable);
+    public void saveArticle(Article article){
+        articleRepository.save(article);
     }
+
 }

@@ -33,6 +33,18 @@ public class Article extends Base {
             , inverseJoinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")})
     private List<Tag> tags;
 
+    public Article() {
+    }
+
+    public Article(Integer aid, String title, String markdown, String html, Category category, List<Tag> tags) {
+        this.aid = aid;
+        this.title = title;
+        this.markdown = markdown;
+        this.html = html;
+        this.category = category;
+        this.tags = tags;
+    }
+
     public Integer getAid() {
         return this.aid;
     }

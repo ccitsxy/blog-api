@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "user")
 public class User extends Base {
@@ -17,9 +17,17 @@ public class User extends Base {
     @Column(name = "username", unique = true)
     private String username;
 
-    @JsonIgnore
     @Column(name = "password")
     private String password;
+
+    public User() {
+    }
+
+    public User(Integer uid, String username, String password) {
+        this.uid = uid;
+        this.username = username;
+        this.password = password;
+    }
 
     public Integer getUid() {
         return this.uid;

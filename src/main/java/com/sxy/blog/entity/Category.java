@@ -32,6 +32,18 @@ public class Category extends Base{
     @JoinColumn(name = "cid", referencedColumnName = "cid")
     private List<Article> articles;
 
+    public Category() {
+    }
+
+    public Category(Integer cid, String name, Integer count, LocalDateTime created, LocalDateTime updated, List<Article> articles) {
+        this.cid = cid;
+        this.name = name;
+        this.count = count;
+        this.created = created;
+        this.updated = updated;
+        this.articles = articles;
+    }
+
     public Integer getCid() {
         return this.cid;
     }

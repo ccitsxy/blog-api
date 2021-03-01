@@ -1,27 +1,19 @@
 package com.sxy.blog.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
-import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
 public class Base {
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-    @CreationTimestamp
-    @Column(name = "created")
+    @Column(name = "created",insertable = false,columnDefinition = "datetime default CURRENT_TIMESTAMP")
     private LocalDateTime created;
 
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-    @UpdateTimestamp
-    @Column(name = "updated")
+    @Column(name = "updated",insertable = false,columnDefinition = "datetime on update CURRENT_TIMESTAMP")
     private LocalDateTime updated;
 
     public LocalDateTime getCreated() {

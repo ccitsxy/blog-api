@@ -26,6 +26,16 @@ public class Tag extends Base {
             , inverseJoinColumns = {@JoinColumn(name = "aid", referencedColumnName = "aid")})
     private List<Article> articles;
 
+    public Tag() {
+    }
+
+    public Tag(Integer tid, String name, Integer count, List<Article> articles) {
+        this.tid = tid;
+        this.name = name;
+        this.count = count;
+        this.articles = articles;
+    }
+
     public Integer getTid() {
         return this.tid;
     }

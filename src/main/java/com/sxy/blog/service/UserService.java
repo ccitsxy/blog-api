@@ -3,29 +3,28 @@ package com.sxy.blog.service;
 import com.sxy.blog.entity.User;
 import com.sxy.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
-@RestController
 @Service
 public class UserService {
-
     @Autowired
     private UserRepository userRepository;
-    @GetMapping("user/all")
-    public List<User> findAll(){
-        return userRepository.findAll();
+
+    public Page<User> findAll(Pageable pageable) {
+        return userRepository.findAll(pageable);
     }
-    @GetMapping("user/save")
-    public User save() {
-        User user = new User();
-        user.setUsername("admin");
-        user.setPassword("123456");
+
+    public User getUserByUid(Integer uid) {
+        return userRepository.getUserByUid(uid);
+    }
+
+    public void saveUser(User user) {
         userRepository.save(user);
-        return user;
+    }
+
+    public void deleteUser(Integer uid){
+        userRepository.deleteById(uid);
     }
 }
