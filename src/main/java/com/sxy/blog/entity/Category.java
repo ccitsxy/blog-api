@@ -6,10 +6,10 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "category")
-public class Category extends Base{
+public class Category extends Base {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
