@@ -3,9 +3,10 @@ package com.sxy.blog.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "tag")
 public class Tag extends Base {
@@ -24,12 +25,12 @@ public class Tag extends Base {
     @JoinTable(name = "article_tag"
             , joinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")}
             , inverseJoinColumns = {@JoinColumn(name = "aid", referencedColumnName = "aid")})
-    private List<Article> articles;
+    private Set<Article> articles = new HashSet<>();
 
     public Tag() {
     }
 
-    public Tag(Integer tid, String name, Integer count, List<Article> articles) {
+    public Tag(Integer tid, String name, Integer count, Set<Article> articles) {
         this.tid = tid;
         this.name = name;
         this.count = count;
@@ -48,7 +49,7 @@ public class Tag extends Base {
         return this.count;
     }
 
-    public List<Article> getArticles() {
+    public Set<Article> getArticles() {
         return this.articles;
     }
 
@@ -64,7 +65,7 @@ public class Tag extends Base {
         this.count = count;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(Set<Article> articles) {
         this.articles = articles;
     }
 }

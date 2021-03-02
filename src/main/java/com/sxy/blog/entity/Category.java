@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Entity
@@ -28,14 +29,16 @@ public class Category extends Base {
     @Column(name = "updated")
     private LocalDateTime updated;
 
-    @OneToMany(targetEntity = Article.class)
-    @JoinColumn(name = "cid", referencedColumnName = "cid")
-    private List<Article> articles;
+    // @OneToMany(targetEntity = Article.class)
+    // @JoinColumn(name = "cid", referencedColumnName = "cid")
+    // 放弃外键维护权， mappedBy = 对方关系的属性名称
+    @OneToMany(mappedBy = "category")
+    private Set<Article> articles = new HashSet<>();
 
     public Category() {
     }
 
-    public Category(Integer cid, String name, Integer count, LocalDateTime created, LocalDateTime updated, List<Article> articles) {
+    public Category(Integer cid, String name, Integer count, LocalDateTime created, LocalDateTime updated, Set<Article> articles) {
         this.cid = cid;
         this.name = name;
         this.count = count;
@@ -64,7 +67,7 @@ public class Category extends Base {
         return this.updated;
     }
 
-    public List<Article> getArticles() {
+    public Set<Article> getArticles() {
         return this.articles;
     }
 
@@ -88,7 +91,7 @@ public class Category extends Base {
         this.updated = updated;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(Set<Article> articles) {
         this.articles = articles;
     }
 }
