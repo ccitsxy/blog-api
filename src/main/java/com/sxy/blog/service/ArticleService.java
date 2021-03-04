@@ -1,27 +1,13 @@
 package com.sxy.blog.service;
 
 import com.sxy.blog.entity.Article;
-import com.sxy.blog.repository.ArticleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
-@Service
-public class ArticleService {
-    @Autowired
-    private ArticleRepository articleRepository;
+public interface ArticleService {
+    Page<Article> findAll(Pageable pageable);
 
-    public Page<Article> findAll(Pageable pageable) {
-        return articleRepository.findAll(pageable);
-    }
+    Article getArticleByAid(Integer aid);
 
-    public Article getArticleByAid(Integer aid) {
-        return articleRepository.getArticleByAid(aid);
-    }
-
-    public void saveArticle(Article article){
-        articleRepository.save(article);
-    }
-
+    void saveArticle(Article article);
 }
