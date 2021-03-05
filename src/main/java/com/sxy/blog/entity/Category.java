@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
@@ -33,7 +34,7 @@ public class Category extends Base {
     // @JoinColumn(name = "cid", referencedColumnName = "cid")
     // 放弃外键维护权， mappedBy = 对方关系的属性名称
     @OneToMany(mappedBy = "category")
-    private Set<Article> articles = new HashSet<>();
+    private Set<Article> articles = new LinkedHashSet<>();
 
     public Category() {
     }
