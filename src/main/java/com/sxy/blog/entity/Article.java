@@ -3,7 +3,7 @@ package com.sxy.blog.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
@@ -29,7 +29,7 @@ public class Article extends Base {
     @JoinTable(name = "article_tag"
             , joinColumns = {@JoinColumn(name = "aid", referencedColumnName = "aid")}
             , inverseJoinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")})
-    private Set<Tag> tags = new HashSet<>();
+    private Set<Tag> tags = new LinkedHashSet<>();
 
     public Article() {
     }
