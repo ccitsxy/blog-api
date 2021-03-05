@@ -21,9 +21,6 @@ public class Article extends Base {
     @Column(name = "markdown", columnDefinition = "longtext")
     private String markdown;
 
-    @Column(name = "html", columnDefinition = "longtext")
-    private String html;
-
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "cid", referencedColumnName = "cid")
     private Category category;
@@ -41,7 +38,6 @@ public class Article extends Base {
         this.aid = aid;
         this.title = title;
         this.markdown = markdown;
-        this.html = html;
         this.category = category;
         this.tags = tags;
     }
@@ -56,10 +52,6 @@ public class Article extends Base {
 
     public String getMarkdown() {
         return this.markdown;
-    }
-
-    public String getHtml() {
-        return this.html;
     }
 
     public Category getCategory() {
@@ -82,9 +74,6 @@ public class Article extends Base {
         this.markdown = markdown;
     }
 
-    public void setHtml(String html) {
-        this.html = html;
-    }
 
     public void setCategory(Category category) {
         this.category = category;

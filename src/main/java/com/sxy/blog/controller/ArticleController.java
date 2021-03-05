@@ -13,7 +13,7 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @GetMapping("/{page},{size}")
+    @GetMapping("/{page}/{size}")
     public Page<Article> findAllArticles(@PathVariable("page") Integer page,@PathVariable("size") Integer size) {
         return articleService.findAll(PageRequest.of(page, size));
     }
