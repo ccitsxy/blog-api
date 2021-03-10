@@ -1,11 +1,19 @@
-package com.sxy.blog.entity;
+package com.sxy.blog.constant;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @MappedSuperclass
 public class Base {
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
@@ -15,20 +23,4 @@ public class Base {
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     @Column(name = "updated", insertable = false, columnDefinition = "datetime on update CURRENT_TIMESTAMP")
     private LocalDateTime updated;
-
-    public LocalDateTime getCreated() {
-        return this.created;
-    }
-
-    public LocalDateTime getUpdated() {
-        return this.updated;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
-    public void setUpdated(LocalDateTime updated) {
-        this.updated = updated;
-    }
 }

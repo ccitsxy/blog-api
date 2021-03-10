@@ -1,11 +1,20 @@
 package com.sxy.blog.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sxy.blog.constant.Base;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "article")
@@ -21,6 +30,9 @@ public class Article extends Base {
     @Column(name = "markdown", columnDefinition = "longtext")
     private String markdown;
 
+    @Column(name = "html", columnDefinition = "longtext")
+    private String html;
+
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "cid", referencedColumnName = "cid")
     private Category category;
@@ -30,56 +42,4 @@ public class Article extends Base {
             , joinColumns = {@JoinColumn(name = "aid", referencedColumnName = "aid")}
             , inverseJoinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")})
     private Set<Tag> tags = new LinkedHashSet<>();
-
-    public Article() {
-    }
-
-    public Article(Integer aid, String title, String markdown, String html, Category category, Set<Tag> tags) {
-        this.aid = aid;
-        this.title = title;
-        this.markdown = markdown;
-        this.category = category;
-        this.tags = tags;
-    }
-
-    public Integer getAid() {
-        return this.aid;
-    }
-
-    public String getTitle() {
-        return this.title;
-    }
-
-    public String getMarkdown() {
-        return this.markdown;
-    }
-
-    public Category getCategory() {
-        return this.category;
-    }
-
-    public Set<Tag> getTags() {
-        return this.tags;
-    }
-
-    public void setAid(Integer aid) {
-        this.aid = aid;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setMarkdown(String markdown) {
-        this.markdown = markdown;
-    }
-
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public void setTags(Set<Tag> tags) {
-        this.tags = tags;
-    }
 }
