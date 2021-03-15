@@ -1,5 +1,7 @@
 package com.sxy.blog.controller;
 
+import cn.dev33.satoken.stp.SaTokenInfo;
+import cn.dev33.satoken.stp.StpUtil;
 import com.sxy.blog.entity.User;
 import com.sxy.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +40,10 @@ public class UserController {
         userService.deleteUser(uid);
     }
 
-    @GetMapping("/login")
-    public void login(){
+    @PostMapping("/login")
+    public SaTokenInfo login(@RequestParam String username, @RequestParam String password){
 
+        StpUtil.setLoginId(1);
+        return StpUtil.getTokenInfo();
     }
 }

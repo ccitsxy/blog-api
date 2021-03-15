@@ -1,5 +1,6 @@
 package com.sxy.blog;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.sxy.blog.entity.User;
 import com.sxy.blog.repository.UserRepository;
 import com.sxy.blog.service.UserService;
@@ -18,10 +19,12 @@ class BlogApplicationTests {
 
     @Test
     void contextLoads() {
-        User user = new User();
+/*        User user = new User();
         user.setUsername("admin");
         user.setPassword("123456");
-        userRepository.save(user);
+        userRepository.save(user);*/
+        StpUtil.setLoginId(1);
+        System.out.println(StpUtil.getTokenInfo());
     }
 
 }
