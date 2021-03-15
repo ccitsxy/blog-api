@@ -37,4 +37,9 @@ public class UserController {
     public void deleteUser(@PathVariable Integer uid) {
         userService.deleteUser(uid);
     }
+
+    @GetMapping("/login")
+    public void login(){
+
+    }
 }
