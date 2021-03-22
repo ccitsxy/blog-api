@@ -27,11 +27,11 @@ public class Article extends Base {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "markdown", columnDefinition = "longtext")
     private String markdown;
-
-    @Column(name = "html", columnDefinition = "longtext")
-    private String html;
 
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "cid", referencedColumnName = "cid")

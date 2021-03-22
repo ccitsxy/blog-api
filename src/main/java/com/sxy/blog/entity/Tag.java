@@ -26,10 +26,11 @@ public class Tag extends Base {
 
     @Column(name = "name", unique = true)
     private String name;
-
-    @ManyToMany(targetEntity = Article.class)
-    @JoinTable(name = "article_tag"
-            , joinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")}
-            , inverseJoinColumns = {@JoinColumn(name = "aid", referencedColumnName = "aid")})
+    /*    @ManyToMany(targetEntity = Article.class)
+        @JoinTable(name = "article_tag"
+                , joinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")}
+                , inverseJoinColumns = {@JoinColumn(name = "aid", referencedColumnName = "aid")})*/
+    // 放弃外键维护权， mappedBy = 对方关系的属性名称 tags
+    @ManyToMany(mappedBy = "tags")
     private Set<Article> articles = new LinkedHashSet<>();
 }
