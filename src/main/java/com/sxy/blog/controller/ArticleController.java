@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
@@ -23,12 +24,12 @@ public class ArticleController {
         return articleService.getArticleByAid(aid);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public void createArticle(@RequestBody Article article) {
         articleService.saveArticle(article);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public void updateArticle(@RequestBody Article article) {
         articleService.saveArticle(article);
     }

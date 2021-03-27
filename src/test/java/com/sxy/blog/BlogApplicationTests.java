@@ -1,9 +1,5 @@
 package com.sxy.blog;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
-import cn.dev33.satoken.secure.SaSecureUtil;
-import cn.dev33.satoken.stp.StpUtil;
-import com.sxy.blog.entity.User;
 import com.sxy.blog.repository.UserRepository;
 import com.sxy.blog.service.UserService;
 import com.sxy.blog.util.PasswordUtil;

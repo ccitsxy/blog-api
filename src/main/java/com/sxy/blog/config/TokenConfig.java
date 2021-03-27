@@ -1,3 +1,4 @@
+/*
 package com.sxy.blog.config;
 
 import cn.dev33.satoken.interceptor.SaAnnotationInterceptor;
@@ -13,3 +14,4 @@ public class TokenConfig implements WebMvcConfigurer {
         registry.addInterceptor(new SaAnnotationInterceptor()).addPathPatterns("/**");
     }
 }
+*/
