@@ -24,7 +24,7 @@ public class ArticleController {
         return articleService.getArticleByAid(aid);
     }
 
-    @PostMapping 
+    @PostMapping
     public void createArticle(@RequestBody Article article) {
         articleService.saveArticle(article);
     }

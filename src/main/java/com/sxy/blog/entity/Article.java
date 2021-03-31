@@ -33,11 +33,13 @@ public class Article extends Base {
     @Column(name = "markdown", columnDefinition = "longtext")
     private String markdown;
 
+    @JsonIgnoreProperties(value = {"articles", "created", "updated"})
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "cid", referencedColumnName = "cid")
     private Category category;
 
-    @ManyToMany(targetEntity = Tag.class)
+    @JsonIgnoreProperties(value = {"articles", "created", "updated"})
+    @ManyToMany(targetEntity = Tag.class, fetch = FetchType.EAGER)
     @JoinTable(name = "article_tag"
             , joinColumns = {@JoinColumn(name = "aid", referencedColumnName = "aid")}
             , inverseJoinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")})

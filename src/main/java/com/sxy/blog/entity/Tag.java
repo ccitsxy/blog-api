@@ -31,6 +31,7 @@ public class Tag extends Base {
                 , joinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")}
                 , inverseJoinColumns = {@JoinColumn(name = "aid", referencedColumnName = "aid")})*/
     // 放弃外键维护权， mappedBy = 对方关系的属性名称 tags
-    @ManyToMany(mappedBy = "tags")
+    @JsonIgnoreProperties(value = {"tags", "created", "updated"})
+    @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER)
     private Set<Article> articles = new LinkedHashSet<>();
 }
