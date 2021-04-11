@@ -34,7 +34,7 @@ public class Article extends Base {
     private String markdown;
 
     @JsonIgnoreProperties(value = {"articles", "created", "updated"})
-    @ManyToOne(targetEntity = Category.class)
+    @ManyToOne(targetEntity = Category.class,fetch = FetchType.EAGER)
     @JoinColumn(name = "cid", referencedColumnName = "cid")
     private Category category;
 

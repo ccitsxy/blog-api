@@ -32,6 +32,6 @@ public class Category extends Base {
     // @OneToMany(targetEntity = Article.class)
     // @JoinColumn(name = "cid", referencedColumnName = "cid")
     // 放弃外键维护权， mappedBy = 对方关系的属性名称 category
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
     private Set<Article> articles = new LinkedHashSet<>();
 }
