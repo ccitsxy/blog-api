@@ -1,5 +1,6 @@
 package com.sxy.blog.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sxy.blog.entity.Tag;
 import com.sxy.blog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
+    @JsonView
     @GetMapping
     public List<Tag> findAllTags() {
         return tagService.findAll();

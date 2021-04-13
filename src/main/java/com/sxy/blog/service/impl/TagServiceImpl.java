@@ -1,5 +1,6 @@
 package com.sxy.blog.service.impl;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sxy.blog.entity.Tag;
 import com.sxy.blog.repository.TagRepository;
 import com.sxy.blog.service.TagService;
