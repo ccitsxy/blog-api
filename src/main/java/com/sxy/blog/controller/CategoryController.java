@@ -1,5 +1,6 @@
 package com.sxy.blog.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sxy.blog.entity.Category;
 import com.sxy.blog.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @JsonView(Category.CategoryInfo.class)
     @GetMapping
     public List<Category> findAllCategories(){
         return categoryService.findAll();

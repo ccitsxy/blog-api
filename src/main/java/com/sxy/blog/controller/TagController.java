@@ -17,7 +17,7 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
-    @JsonView
+    @JsonView(Tag.TagInfo.class)
     @GetMapping
     public List<Tag> findAllTags() {
         return tagService.findAll();

@@ -2,10 +2,12 @@ package com.sxy.blog;
 
 import com.sxy.blog.entity.Article;
 import com.sxy.blog.entity.Tag;
+import com.sxy.blog.repository.ArticleRepository;
 import com.sxy.blog.repository.UserRepository;
 import com.sxy.blog.service.ArticleService;
 import com.sxy.blog.service.UserService;
 import com.sxy.blog.util.PasswordUtil;
+import org.apache.tomcat.util.json.JSONParser;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,19 +23,21 @@ class BlogApplicationTests {
 
         @Autowired
         UserService userService;*/
+/*    @Autowired
+    ArticleService articleService;*/
     @Autowired
-    ArticleService articleService;
+    ArticleRepository articleRepository;
 
     @Test
     void contextLoads() {
-        Article article = new Article();
+/*        Article article = new Article();
         Tag tag1 = new Tag();
         tag1.setTid(1);
         Set<Tag> tags= new LinkedHashSet<>();
         tags.add(tag1);
         article.setTags(tags);
         articleService.saveArticle(article);
-        System.out.println(article);
+        System.out.println(article);*/
 /*        User user = new User();
         user.setUsername("admin");
         user.setPassword("123456");
