@@ -13,8 +13,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.*;
-import java.util.*;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
+import java.util.List;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {

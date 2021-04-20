@@ -1,11 +1,13 @@
 package com.sxy.blog.service.impl;
 
+import com.sxy.blog.constant.JsonPage;
 import com.sxy.blog.entity.Category;
 import com.sxy.blog.repository.CategoryRepository;
 import com.sxy.blog.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +23,10 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Page<Category> findAll(Pageable pageable) {
-        return categoryRepository.findAll(pageable);
+    public Page<Category> findAll(Integer page, Integer size) {
+        Sort sort = Sort.by(Sort.Order.desc("cid"));
+        PageRequest pr = PageRequest.of(page, size, sort);
+        return new JsonPage<>(categoryRepository.findAll(pr), pr);
     }
 
     @Override
@@ -32,6 +36,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void saveCategory(Category category) {
-        categoryRepository.save(category);
+        categoryRepository.saveAndFlush(category);
     }
 }

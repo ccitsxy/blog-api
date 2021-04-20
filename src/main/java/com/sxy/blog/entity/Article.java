@@ -2,7 +2,6 @@ package com.sxy.blog.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
-
 import com.sxy.blog.constant.Base;
 import com.sxy.blog.constant.JsonPage;
 import lombok.AllArgsConstructor;

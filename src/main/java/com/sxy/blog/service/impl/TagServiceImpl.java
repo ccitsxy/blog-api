@@ -1,12 +1,13 @@
 package com.sxy.blog.service.impl;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sxy.blog.constant.JsonPage;
 import com.sxy.blog.entity.Tag;
 import com.sxy.blog.repository.TagRepository;
 import com.sxy.blog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +23,10 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public Page<Tag> findAll(Pageable pageable) {
-        return tagRepository.findAll(pageable);
+    public Page<Tag> findAll(Integer page, Integer size) {
+        Sort sort = Sort.by(Sort.Order.desc("tid"));
+        PageRequest pr = PageRequest.of(page, size, sort);
+        return new JsonPage<>(tagRepository.findAll(pr), pr);
     }
 
     @Override

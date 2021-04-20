@@ -5,7 +5,6 @@ import com.sxy.blog.entity.Tag;
 import com.sxy.blog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,9 +22,10 @@ public class TagController {
         return tagService.findAll();
     }
 
+    @JsonView(Tag.TagDetail.class)
     @GetMapping("/{page}/{size}")
     public Page<Tag> findAllTags(@PathVariable("page") Integer page, @PathVariable("size") Integer size) {
-        return tagService.findAll(PageRequest.of(page, size));
+        return tagService.findAll(page, size);
     }
 
     @GetMapping("/{tid}")

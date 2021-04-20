@@ -3,6 +3,7 @@ package com.sxy.blog.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sxy.blog.constant.Base;
+import com.sxy.blog.constant.JsonPage;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,5 +38,7 @@ public class Category extends Base {
     @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
     private Set<Article> articles = new LinkedHashSet<>();
 
-    public interface CategoryInfo{}
+    public interface CategoryInfo extends BaseInfo{}
+
+    public interface CategoryDetail extends CategoryInfo, JsonPage.JsonViews {}
 }

@@ -3,10 +3,13 @@ package com.sxy.blog.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sxy.blog.constant.Base;
-import lombok.*;
+import com.sxy.blog.constant.JsonPage;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -37,5 +40,9 @@ public class Tag extends Base {
     @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER)
     private Set<Article> articles = new LinkedHashSet<>();
 
-    public interface TagInfo{}
+    public interface TagInfo extends BaseInfo {
+    }
+
+    public interface TagDetail extends TagInfo, JsonPage.JsonViews {
+    }
 }
