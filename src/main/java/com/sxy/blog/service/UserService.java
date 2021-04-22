@@ -9,7 +9,11 @@ public interface UserService {
 
     User getUserByUid(Integer uid);
 
+    User getUserByUsername(String username);
+
     void saveUser(User user);
 
     void deleteUser(Integer uid);
+
+    String login(String username, String password);
 }
