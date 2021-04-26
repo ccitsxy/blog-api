@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.getUserByUsername(username);
         if (PasswordUtil.Decrypt(password, user.getPassword())) {
             StpUtil.setLoginId(user.getUid());
-            return StpUtil.getTokenInfo().tokenValue;
+            return StpUtil.getTokenValue();
         }
         return null;
     }

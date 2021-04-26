@@ -4,6 +4,7 @@ import com.sxy.blog.entity.Article;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ArticleService {
     Page<Article> findAll(Integer page, Integer size);
@@ -15,6 +16,8 @@ public interface ArticleService {
     List<Article> findAll();
 
     Article getArticleByAid(Integer aid);
+
+    List<Map<String, Object>> archiveArticles();
 
     void saveArticle(Article article);
 }

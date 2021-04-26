@@ -1,6 +1,5 @@
 package com.sxy.blog.controller;
 
-import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import com.sxy.blog.entity.User;
 import com.sxy.blog.service.UserService;
@@ -27,12 +26,7 @@ public class UserController {
     }
 
     @PostMapping
-    public void createUser(@RequestBody User user) {
-        userService.saveUser(user);
-    }
-
-    @PutMapping
-    public void updateUser(@RequestBody User user) {
+    public void createOrUpdateUser(@RequestBody User user) {
         userService.saveUser(user);
     }
 
@@ -48,6 +42,6 @@ public class UserController {
 
     @GetMapping("/logout")
     public void logout() {
-
+        StpUtil.logout();
     }
 }

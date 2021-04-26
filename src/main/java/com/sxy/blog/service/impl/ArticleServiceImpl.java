@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -57,6 +58,11 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Article getArticleByAid(Integer aid) {
         return articleRepository.getArticleByAid(aid);
+    }
+
+    @Override
+    public List<Map<String, Object>> archiveArticles() {
+        return articleRepository.archiveArticles();
     }
 
     @Override

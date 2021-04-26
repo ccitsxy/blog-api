@@ -1,5 +1,6 @@
 package com.sxy.blog.controller;
 
+import cn.dev33.satoken.annotation.SaCheckLogin;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sxy.blog.entity.Article;
 import com.sxy.blog.service.ArticleService;
@@ -7,12 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
+
+    @JsonView(Article.ArticleInfo.class)
+    @GetMapping
+    public List<Article> findAllArticles(){
+        return articleService.findAll();
+    }
 
     @JsonView(Article.ArticleInfo.class)
     @GetMapping("/{page}/{size}")
@@ -42,13 +51,13 @@ public class ArticleController {
         return articleService.getArticleByAid(aid);
     }
 
-    @PostMapping
-    public void createArticle(@RequestBody Article article) {
-        articleService.saveArticle(article);
+    @GetMapping("/archive")
+    public Object archiveArticles(){
+        return articleService.archiveArticles();
     }
 
-    @PutMapping
-    public void updateArticle(@RequestBody Article article) {
+    @PostMapping
+    public void createOrUpdateArticle(@RequestBody Article article) {
         articleService.saveArticle(article);
     }
 }

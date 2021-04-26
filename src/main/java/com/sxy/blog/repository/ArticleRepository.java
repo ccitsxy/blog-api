@@ -7,11 +7,18 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
+import java.util.Map;
 
 public interface ArticleRepository extends JpaRepository<Article, Integer>, JpaSpecificationExecutor<Article> {
     Article getArticleByAid(Integer aid);
 
     Page<Article> findAllByCategory(Category category, Pageable pageable);
 
-    Page<Article> findAll(Specification spec,Pageable pageable);
+    Page<Article> findAll(Specification spec, Pageable pageable);
+
+    @Query(value = "select function('year',a.created) as year, function('month',a.created) as month from Article a group by year,month")
+    List<Map<String,Object>> archiveArticles();
 }
