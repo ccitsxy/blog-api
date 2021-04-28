@@ -11,6 +11,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -24,13 +25,13 @@ public class Base {
     @CreationTimestamp
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @Column(name = "created", insertable = false, columnDefinition = "datetime default CURRENT_TIMESTAMP")
-    private Date created;
+    private LocalDateTime created;
 
     @JsonView(BaseInfo.class)
     @UpdateTimestamp
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @Column(name = "updated", insertable = false, columnDefinition = "datetime on update CURRENT_TIMESTAMP")
-    private Date updated;
+    private LocalDateTime updated;
 
     public interface BaseInfo {
     }

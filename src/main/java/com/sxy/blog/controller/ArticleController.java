@@ -1,6 +1,5 @@
 package com.sxy.blog.controller;
 
-import cn.dev33.satoken.annotation.SaCheckLogin;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sxy.blog.entity.Article;
 import com.sxy.blog.service.ArticleService;
@@ -44,6 +43,15 @@ public class ArticleController {
                                       @PathVariable("page") Integer page,
                                       @PathVariable("size") Integer size) {
         return articleService.findAllByTag(tid, page, size);
+    }
+
+    @JsonView(Article.ArticleInfo.class)
+    @GetMapping("/archive/{year}/{month}/{page}/{size}")
+    public Page<Article> findAllByArchive(@PathVariable("year") Integer year,
+                                      @PathVariable Integer month,
+                                      @PathVariable("page") Integer page,
+                                      @PathVariable("size") Integer size) {
+        return articleService.findAllByArchive(year, month, page, size);
     }
 
     @GetMapping("/{aid}")

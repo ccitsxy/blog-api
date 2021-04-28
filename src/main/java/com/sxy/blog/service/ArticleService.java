@@ -13,6 +13,8 @@ public interface ArticleService {
 
     Page<Article> findAllByTag(Integer tid,Integer page, Integer size);
 
+    Page<Article> findAllByArchive(Integer year,Integer month, Integer page, Integer size);
+
     List<Article> findAll();
 
     Article getArticleByAid(Integer aid);

@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +21,9 @@ public interface ArticleRepository extends JpaRepository<Article, Integer>, JpaS
 
     Page<Article> findAll(Specification spec, Pageable pageable);
 
-    @Query(value = "select function('year',a.created) as year, function('month',a.created) as month from Article a group by year,month")
+    @Query(value = "select function('year',a.created) as year, function('month',a.created) as month " +
+            "from Article a group by year,month order by a.aid desc")
     List<Map<String,Object>> archiveArticles();
+
+    Page<Article> findArticlesByCreatedBetween(LocalDateTime created, LocalDateTime created2, Pageable pageable);
 }

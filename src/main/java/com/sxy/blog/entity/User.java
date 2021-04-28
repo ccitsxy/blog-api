@@ -1,6 +1,7 @@
 package com.sxy.blog.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sxy.blog.constant.Base;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ import javax.persistence.*;
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "user")
-public class User {
+public class User extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "uid")
