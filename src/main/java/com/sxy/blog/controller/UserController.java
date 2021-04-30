@@ -8,12 +8,19 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @GetMapping
+    public List<User> findAllUsers(){
+        return userService.findAll();
+    }
 
     @GetMapping("/{page}/{size}")
     public Page<User> findAllUsers(@PathVariable("page") Integer page, @PathVariable("size") Integer size) {
