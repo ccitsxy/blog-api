@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public void logout() {
-        StpUtil.logout();
+    public void logout(@RequestParam Integer uid) {
+        StpUtil.logoutByLoginId(uid);
     }
 }
