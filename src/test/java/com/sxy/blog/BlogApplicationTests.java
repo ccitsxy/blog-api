@@ -17,7 +17,7 @@ class BlogApplicationTests {
     void contextLoads() {
         String[] ids = TimeZone.getAvailableIDs();
         for (String id:ids)
-            System.out.printf(id+", ");
+            System.out.print(id+", ");
     }
 
 }

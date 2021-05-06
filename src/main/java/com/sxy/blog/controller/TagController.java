@@ -25,7 +25,7 @@ public class TagController {
     @JsonView(Tag.TagDetail.class)
     @GetMapping("/{page}/{size}")
     public Page<Tag> findAllTags(@PathVariable("page") Integer page, @PathVariable("size") Integer size) {
-        return tagService.findAll(page, size);
+        return tagService.findAll(page - 1, size);
     }
 
     @GetMapping("/{tid}")

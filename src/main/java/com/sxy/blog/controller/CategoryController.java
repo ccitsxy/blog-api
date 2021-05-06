@@ -25,7 +25,7 @@ public class CategoryController {
     @JsonView(Category.CategoryDetail.class)
     @GetMapping("/{page}/{size}")
     public Page<Category> findAllCategories(@PathVariable("page") Integer page, @PathVariable("size") Integer size) {
-        return categoryService.findAll(page, size);
+        return categoryService.findAll(page-1, size);
     }
 
     @GetMapping("/{cid}")

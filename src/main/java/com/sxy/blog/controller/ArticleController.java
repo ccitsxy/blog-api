@@ -18,7 +18,7 @@ public class ArticleController {
 
     @JsonView(Article.ArticleInfo.class)
     @GetMapping
-    public List<Article> findAllArticles(){
+    public List<Article> findAllArticles() {
         return articleService.findAll();
     }
 
@@ -26,7 +26,7 @@ public class ArticleController {
     @GetMapping("/{page}/{size}")
     public Page<Article> findAllArticles(@PathVariable("page") Integer page,
                                          @PathVariable("size") Integer size) {
-        return articleService.findAll(page, size);
+        return articleService.findAll(page - 1, size);
     }
 
     @JsonView(Article.ArticleInfo.class)
@@ -34,7 +34,7 @@ public class ArticleController {
     public Page<Article> findArticlesByCategory(@PathVariable("cid") Integer cid,
                                                 @PathVariable("page") Integer page,
                                                 @PathVariable("size") Integer size) {
-        return articleService.findAllByCategory(cid, page, size);
+        return articleService.findAllByCategory(cid, page - 1, size);
     }
 
     @JsonView(Article.ArticleInfo.class)
@@ -42,16 +42,16 @@ public class ArticleController {
     public Page<Article> findAllByTag(@PathVariable("tid") Integer tid,
                                       @PathVariable("page") Integer page,
                                       @PathVariable("size") Integer size) {
-        return articleService.findAllByTag(tid, page, size);
+        return articleService.findAllByTag(tid, page - 1, size);
     }
 
     @JsonView(Article.ArticleInfo.class)
     @GetMapping("/archive/{year}/{month}/{page}/{size}")
     public Page<Article> findAllByArchive(@PathVariable("year") Integer year,
-                                      @PathVariable Integer month,
-                                      @PathVariable("page") Integer page,
-                                      @PathVariable("size") Integer size) {
-        return articleService.findAllByArchive(year, month, page, size);
+                                          @PathVariable Integer month,
+                                          @PathVariable("page") Integer page,
+                                          @PathVariable("size") Integer size) {
+        return articleService.findAllByArchive(year, month, page - 1, size);
     }
 
     @GetMapping("/{aid}")
@@ -60,7 +60,7 @@ public class ArticleController {
     }
 
     @GetMapping("/archive")
-    public Object archiveArticles(){
+    public Object archiveArticles() {
         return articleService.archiveArticles();
     }
 
