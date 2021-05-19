@@ -13,11 +13,11 @@ import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Getter
 @Setter
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
+@NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "category")
 public class Category extends Base {

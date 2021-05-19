@@ -2,9 +2,9 @@ package com.sxy.blog.repository;
 
 import com.sxy.blog.entity.Article;
 import com.sxy.blog.entity.Category;
+import com.sxy.blog.entity.Comment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -18,9 +18,7 @@ public interface ArticleRepository extends JpaRepository<Article, Integer>, JpaS
 
     Page<Article> findAllByCategory(Category category, Pageable pageable);
 
-    Page<Article> findAll(Specification spec, Pageable pageable);
-
-    @Query(value = "select function('year', a.created) as year, function('month', a.created) as month " +
+    @Query("select function('year', a.created) as year, function('month', a.created) as month " +
             "from Article a group by year,month order by a.aid desc")
     List<Map<String, Object>> archiveArticles();
 

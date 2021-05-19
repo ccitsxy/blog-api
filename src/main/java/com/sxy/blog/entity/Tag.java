@@ -13,11 +13,11 @@ import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Getter
 @Setter
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
+@NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "tag")
 public class Tag extends Base {
@@ -36,7 +36,7 @@ public class Tag extends Base {
                 , joinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")}
                 , inverseJoinColumns = {@JoinColumn(name = "aid", referencedColumnName = "aid")})*/
     // 放弃外键维护权， mappedBy = 对方关系的属性名称 tags
-    @JsonIgnoreProperties(value = {"markdown"})
+    @JsonIgnoreProperties({"markdown"})
     @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER)
     private Set<Article> articles = new LinkedHashSet<>();
 

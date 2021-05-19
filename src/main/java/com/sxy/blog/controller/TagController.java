@@ -22,17 +22,35 @@ public class TagController {
         return tagService.findAll();
     }
 
+    /**
+     * GET /tag/{page}/{size} : 查询所有标签并分页
+     *
+     * @param page 页号 (required)
+     * @param size 分页大小 (required)
+     * @return 标签列表 (分页)
+     */
     @JsonView(Tag.TagDetail.class)
     @GetMapping("/{page}/{size}")
     public Page<Tag> findAllTags(@PathVariable("page") Integer page, @PathVariable("size") Integer size) {
         return tagService.findAll(page - 1, size);
     }
 
+    /**
+     * GET /tag/{tid} : 按id查询标签
+     *
+     * @param tid 标签id (required)
+     * @return 标签
+     */
     @GetMapping("/{tid}")
     public Tag findTagByTid(@PathVariable Integer tid) {
         return tagService.getTagByTid(tid);
     }
 
+    /**
+     * POST /tag : 新建或修改标签
+     *
+     * @param tag 标签
+     */
     @PostMapping
     public void createOrUpdateTag(@RequestBody Tag tag) {
         tagService.saveTag(tag);

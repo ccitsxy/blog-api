@@ -9,11 +9,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
 @Setter
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
+@NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "user")
 public class User extends Base {

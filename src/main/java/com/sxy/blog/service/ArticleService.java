@@ -9,11 +9,11 @@ import java.util.Map;
 public interface ArticleService {
     Page<Article> findAll(Integer page, Integer size);
 
-    Page<Article> findAllByCategory(Integer cid,Integer page, Integer size);
+    Page<Article> findAllByCategory(Integer cid, Integer page, Integer size);
 
-    Page<Article> findAllByTag(Integer tid,Integer page, Integer size);
+    Page<Article> findAllByTag(Integer tid, Integer page, Integer size);
 
-    Page<Article> findAllByArchive(Integer year,Integer month, Integer page, Integer size);
+    Page<Article> findAllByArchive(Integer year, Integer month, Integer page, Integer size);
 
     List<Article> findAll();
 

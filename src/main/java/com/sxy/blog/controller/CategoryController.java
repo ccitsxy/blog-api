@@ -16,23 +16,47 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    /**
+     * GET /category : 查询所有标签
+     *
+     * @return 标签列表
+     */
     @JsonView(Category.CategoryInfo.class)
     @GetMapping
     public List<Category> findAllCategories() {
         return categoryService.findAll();
     }
 
+    /**
+     * GET /category/{page}/{size} : 查询所有分类并分页
+     *
+     * @param page 页号 (required)
+     * @param size 分页大小 (required)
+     * @return 标签列表 (分页)
+     */
     @JsonView(Category.CategoryDetail.class)
     @GetMapping("/{page}/{size}")
-    public Page<Category> findAllCategories(@PathVariable("page") Integer page, @PathVariable("size") Integer size) {
+    public Page<Category> findAllCategories(@PathVariable("page") Integer page,
+                                            @PathVariable("size") Integer size) {
         return categoryService.findAll(page-1, size);
     }
 
+    /**
+     * GET /category/{cid} : 按id查询分类
+     *
+     * @param cid 分类id (required)
+     * @return 分类
+     */
     @GetMapping("/{cid}")
     public Category findCategoryByCid(@PathVariable Integer cid) {
         return categoryService.getCategoryByCid(cid);
     }
 
+    /**
+     * POST /category : 新建或修改分类
+     *
+     * @param category 分类
+     */
     @PostMapping
     public void createOrUpdateCategory(@RequestBody Category category) {
         categoryService.saveCategory(category);

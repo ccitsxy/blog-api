@@ -13,22 +13,22 @@ import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Getter
 @Setter
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
+@NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "article")
 public class Article extends Base {
 
-    @JsonView({ArticleInfo.class, ArticleDetail.class})
+    @JsonView({ArticleList.class, ArticleInfo.class, ArticleDetail.class})
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "aid")
     private Integer aid;
 
-    @JsonView({ArticleInfo.class, ArticleDetail.class})
+    @JsonView({ArticleList.class, ArticleInfo.class, ArticleDetail.class})
     @Column(name = "title")
     private String title;
 
@@ -41,20 +41,29 @@ public class Article extends Base {
     private String markdown;
 
     @JsonView({ArticleInfo.class, ArticleDetail.class})
-    @JsonIgnoreProperties(value = {"articles", "created", "updated"})
+    @JsonIgnoreProperties({"articles", "created", "updated"})
     @ManyToOne(targetEntity = Category.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "cid", referencedColumnName = "cid")
     private Category category;
 
     @JsonView({ArticleInfo.class, ArticleDetail.class})
-    @JsonIgnoreProperties(value = {"articles", "created", "updated"})
+    @JsonIgnoreProperties({"articles", "created", "updated"})
     @ManyToMany(targetEntity = Tag.class, fetch = FetchType.EAGER)
     @JoinTable(name = "article_tag"
             , joinColumns = {@JoinColumn(name = "aid", referencedColumnName = "aid")}
             , inverseJoinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")})
     private Set<Tag> tags = new LinkedHashSet<>();
 
-    public interface ArticleInfo extends JsonPage.JsonViews,BaseInfo,Tag.TagInfo,Category.CategoryInfo {}
+    @JsonIgnoreProperties({"articles","article"})
+    @OneToMany(mappedBy = "article", fetch = FetchType.EAGER)
+    private Set<Comment> comments = new LinkedHashSet<>();
 
-    public interface ArticleDetail extends JsonPage.JsonViews,BaseInfo,Tag.TagInfo,Category.CategoryInfo {}
+    public interface ArticleList extends BaseInfo {
+    }
+
+    public interface ArticleInfo extends JsonPage.JsonViews, BaseInfo, Tag.TagInfo, Category.CategoryInfo {
+    }
+
+    public interface ArticleDetail extends JsonPage.JsonViews, BaseInfo, Tag.TagInfo, Category.CategoryInfo {
+    }
 }
