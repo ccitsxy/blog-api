@@ -10,7 +10,7 @@ public interface CategoryService {
 
     Page<Category> findAll(Integer page, Integer size);
 
-    Category getCategoryByCid(Integer cid);
+    Category getCategoryByCid(Long cid);
 
     void saveCategory(Category category);
 }

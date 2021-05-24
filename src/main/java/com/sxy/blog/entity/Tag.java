@@ -26,7 +26,7 @@ public class Tag extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tid")
-    private Integer tid;
+    private Long tid;
 
     @JsonView(TagInfo.class)
     @Column(name = "name", unique = true)

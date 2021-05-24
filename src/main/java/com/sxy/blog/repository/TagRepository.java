@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface TagRepository extends JpaRepository<Tag, Integer>, JpaSpecificationExecutor<Tag> {
-    Tag getTagByTid(Integer tid);
+    Tag getTagByTid(Long tid);
 
     @Query("select t.tid as tid, t.name as name," +
             "function('date_format',t.created,'%Y-%m-%d %H:%i:%s') as created," +

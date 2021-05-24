@@ -51,7 +51,7 @@ public class ArticleController {
      */
     @JsonView(Article.ArticleInfo.class)
     @GetMapping("/category/{cid}/{page}/{size}")
-    public Page<Article> findArticlesByCategory(@PathVariable("cid") Integer cid,
+    public Page<Article> findArticlesByCategory(@PathVariable("cid") Long cid,
                                                 @PathVariable("page") Integer page,
                                                 @PathVariable("size") Integer size) {
         return articleService.findAllByCategory(cid, page - 1, size);
@@ -67,7 +67,7 @@ public class ArticleController {
      */
     @JsonView(Article.ArticleInfo.class)
     @GetMapping("/tag/{tid}/{page}/{size}")
-    public Page<Article> findAllByTag(@PathVariable("tid") Integer tid,
+    public Page<Article> findAllByTag(@PathVariable("tid") Long tid,
                                       @PathVariable("page") Integer page,
                                       @PathVariable("size") Integer size) {
         return articleService.findAllByTag(tid, page - 1, size);
@@ -98,7 +98,7 @@ public class ArticleController {
      * @return 文章
      */
     @GetMapping("/{aid}")
-    public Article getArticleByAid(@PathVariable Integer aid) {
+    public Article getArticleByAid(@PathVariable Long aid) {
         return articleService.getArticleByAid(aid);
     }
 

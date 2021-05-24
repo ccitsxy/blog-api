@@ -10,7 +10,7 @@ public interface TagService {
 
     Page<Tag> findAll(Integer page, Integer size);
 
-    Tag getTagByTid(Integer tid);
+    Tag getTagByTid(Long tid);
 
     void saveTag(Tag tag);
 }

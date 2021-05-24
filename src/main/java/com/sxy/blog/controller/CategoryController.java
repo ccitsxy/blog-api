@@ -47,7 +47,7 @@ public class CategoryController {
      * @return 分类
      */
     @GetMapping("/{cid}")
-    public Category findCategoryByCid(@PathVariable Integer cid) {
+    public Category findCategoryByCid(@PathVariable Long cid) {
         return categoryService.getCategoryByCid(cid);
     }
 

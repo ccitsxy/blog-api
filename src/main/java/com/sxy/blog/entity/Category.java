@@ -26,7 +26,7 @@ public class Category extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cid")
-    private Integer cid;
+    private Long cid;
 
     @JsonView(CategoryInfo.class)
     @Column(name = "name", unique = true)

@@ -30,7 +30,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public Tag getTagByTid(Integer tid) {
+    public Tag getTagByTid(Long tid) {
         return tagRepository.getTagByTid(tid);
     }
 

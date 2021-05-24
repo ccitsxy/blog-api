@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
-    Category getCategoryByCid(Integer cid);
+    Category getCategoryByCid(Long cid);
 
     @Query("select c.cid as cid, c.name as name," +
             "function('date_format',c.created,'%Y-%m-%d %H:%i:%s') as created," +

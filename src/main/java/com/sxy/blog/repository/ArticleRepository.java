@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface ArticleRepository extends JpaRepository<Article, Integer>, JpaSpecificationExecutor<Article> {
-    Article getArticleByAid(Integer aid);
+    Article getArticleByAid(Long aid);
 
     Page<Article> findArticlesByCategory(Category category, Pageable pageable);
 

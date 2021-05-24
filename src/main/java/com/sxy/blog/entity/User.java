@@ -20,7 +20,7 @@ public class User extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "uid")
-    private Integer uid;
+    private Long uid;
 
     @Column(name = "username", unique = true)
     private String username;
