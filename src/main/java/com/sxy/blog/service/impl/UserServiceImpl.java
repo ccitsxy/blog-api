@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByUid(Integer uid) {
+    public User getUserByUid(Long uid) {
         return userRepository.getUserByUid(uid);
     }
 
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(Integer uid) {
+    public void deleteUser(Long uid) {
         userRepository.deleteById(uid);
     }
 

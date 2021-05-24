@@ -11,13 +11,13 @@ public interface UserService {
 
     Page<User> findAll(Pageable pageable);
 
-    User getUserByUid(Integer uid);
+    User getUserByUid(Long uid);
 
     User getUserByUsername(String username);
 
     void saveUser(User user);
 
-    void deleteUser(Integer uid);
+    void deleteUser(Long uid);
 
     String login(String username, String password);
 }
