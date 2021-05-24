@@ -37,7 +37,7 @@ public class ArticleServiceImpl implements ArticleService {
         category.setCid(cid);
         Sort sort = Sort.by(Sort.Order.desc("aid"));
         PageRequest pr = PageRequest.of(page, size, sort);
-        return new JsonPage<>(articleRepository.findAllByCategory(category, pr), pr);
+        return new JsonPage<>(articleRepository.findArticlesByCategory(category, pr), pr);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Map<String, Object>> archiveArticles() {
+    public List<Map<String, Object>> archiveAll() {
         return articleRepository.archiveArticles();
     }
 

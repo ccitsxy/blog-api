@@ -17,13 +17,12 @@ public class CategoryController {
     private CategoryService categoryService;
 
     /**
-     * GET /category : 查询所有标签
+     * GET /category : 查询所有分类
      *
-     * @return 标签列表
+     * @return 分类列表
      */
-    @JsonView(Category.CategoryInfo.class)
     @GetMapping
-    public List<Category> findAllCategories() {
+    public List<Category> findAll() {
         return categoryService.findAll();
     }
 
@@ -36,8 +35,8 @@ public class CategoryController {
      */
     @JsonView(Category.CategoryDetail.class)
     @GetMapping("/{page}/{size}")
-    public Page<Category> findAllCategories(@PathVariable("page") Integer page,
-                                            @PathVariable("size") Integer size) {
+    public Page<Category> findAll(@PathVariable("page") Integer page,
+                                  @PathVariable("size") Integer size) {
         return categoryService.findAll(page-1, size);
     }
 

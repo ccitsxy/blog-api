@@ -16,6 +16,11 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
+    /**
+     * GET /tag : 查询所有标签
+     *
+     * @return 标签列表
+     */
     @JsonView(Tag.TagInfo.class)
     @GetMapping
     public List<Tag> findAllTags() {

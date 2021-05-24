@@ -1,6 +1,6 @@
 package com.sxy.blog;
 
-import com.sxy.blog.repository.ArticleRepository;
+import com.sxy.blog.repository.CategoryRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,16 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 class BlogApplicationTests {
 
     @Autowired
-    ArticleRepository articleRepository;
+    CategoryRepository categoryRepository;
 
     @Test
     void contextLoads() {
-/*        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            System.out.println(objectMapper.writeValueAsString(commentRepository.findAllByParentIsNull()));
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }*/
     }
 
 }

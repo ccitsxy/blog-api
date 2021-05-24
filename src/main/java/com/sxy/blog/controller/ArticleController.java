@@ -6,7 +6,6 @@ import com.sxy.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -38,7 +37,7 @@ public class ArticleController {
     @JsonView(Article.ArticleInfo.class)
     @GetMapping("/{page}/{size}")
     public Page<Article> findAllArticles(@PathVariable("page") Integer page,
-                                         @PathVariable("size") Integer size) {
+                                                         @PathVariable("size") Integer size) {
         return articleService.findAll(page - 1, size);
     }
 
@@ -109,8 +108,8 @@ public class ArticleController {
      * @return 归档列表
      */
     @GetMapping("/archive")
-    public Object archiveArticles() {
-        return articleService.archiveArticles();
+    public Object archiveAll() {
+        return articleService.archiveAll();
     }
 
     /**
@@ -121,10 +120,5 @@ public class ArticleController {
     @PostMapping
     public void createOrUpdateArticle(@RequestBody Article article) {
         articleService.saveArticle(article);
-    }
-
-    @PostMapping("/fileUpload")
-    public void fileUpload(@RequestBody MultipartFile multipartFile){
-
     }
 }
