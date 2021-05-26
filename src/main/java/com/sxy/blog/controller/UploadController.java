@@ -9,6 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadController {
     @PostMapping
     public void upload(@RequestBody MultipartFile multipartFile){
-        
+
     }
 }
