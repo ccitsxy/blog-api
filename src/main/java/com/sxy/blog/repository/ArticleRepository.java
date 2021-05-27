@@ -2,6 +2,7 @@ package com.sxy.blog.repository;
 
 import com.sxy.blog.entity.Article;
 import com.sxy.blog.entity.Category;
+import com.sxy.blog.entity.Comment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
