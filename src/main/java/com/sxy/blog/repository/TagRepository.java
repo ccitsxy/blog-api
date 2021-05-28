@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import java.util.Map;
 
-public interface TagRepository extends JpaRepository<Tag, Long>, JpaSpecificationExecutor<Tag> {
+public interface TagRepository extends JpaRepository<Tag, Integer>, JpaSpecificationExecutor<Tag> {
     // 根据ID查询标签
-    Tag getTagByTid(Long tid);
+    Tag getTagByTid(Integer tid);
 
     // 查询所有标签并查询对应文章数
     @Query("select t.tid as tid, t.name as name," +

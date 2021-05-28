@@ -13,39 +13,45 @@ import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+// 文章表
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "comments"})
 @Entity
 @Table(name = "article")
 public class Article extends Base {
-
+    // 文章ID
     @JsonView({ArticleList.class, ArticleInfo.class, ArticleDetail.class})
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "aid")
-    private Long aid;
+    private Integer aid;
 
+    // 标题
     @JsonView({ArticleList.class, ArticleInfo.class, ArticleDetail.class})
-    @Column(name = "title")
+    @Column(name = "title", length = 50)
     private String title;
 
+    // 简介
     @JsonView(ArticleInfo.class)
-    @Column(name = "description")
+    @Column(name = "description", length = 100)
     private String description;
 
+    // Markdown 正文
     @JsonView(ArticleDetail.class)
     @Column(name = "markdown", columnDefinition = "longtext")
     private String markdown;
 
+    // 分类
     @JsonView({ArticleInfo.class, ArticleDetail.class})
     @JsonIgnoreProperties({"articles", "created", "updated"})
     @ManyToOne(targetEntity = Category.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "cid", referencedColumnName = "cid")
     private Category category;
 
+    // 标签
     @JsonView({ArticleInfo.class, ArticleDetail.class})
     @JsonIgnoreProperties({"articles", "created", "updated"})
     @ManyToMany(targetEntity = Tag.class, fetch = FetchType.EAGER)
@@ -54,7 +60,8 @@ public class Article extends Base {
             , inverseJoinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")})
     private Set<Tag> tags = new LinkedHashSet<>();
 
-    @JsonIgnoreProperties({"articles","article"})
+    // 评论
+    @JsonIgnoreProperties({"articles", "article"})
     @OneToMany(mappedBy = "article", fetch = FetchType.EAGER)
     private Set<Comment> comments = new LinkedHashSet<>();
 

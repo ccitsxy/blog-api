@@ -47,7 +47,7 @@ public class TagController {
      * @return 标签
      */
     @GetMapping("/{tid}")
-    public Tag findTagByTid(@PathVariable Long tid) {
+    public Tag findTagByTid(@PathVariable Integer tid) {
         return tagService.getTagByTid(tid);
     }
 

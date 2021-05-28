@@ -2,7 +2,6 @@ package com.sxy.blog.repository;
 
 import com.sxy.blog.entity.Article;
 import com.sxy.blog.entity.Category;
-import com.sxy.blog.entity.Comment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,9 +12,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
-public interface ArticleRepository extends JpaRepository<Article, Long>, JpaSpecificationExecutor<Article> {
+public interface ArticleRepository extends JpaRepository<Article, Integer>, JpaSpecificationExecutor<Article> {
     // 根据ID查询文章
-    Article getArticleByAid(Long aid);
+    Article getArticleByAid(Integer aid);
 
     // 根据分类查询文章
     Page<Article> findArticlesByCategory(Category category, Pageable pageable);

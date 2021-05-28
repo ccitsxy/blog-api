@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import java.util.Map;
 
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+public interface CategoryRepository extends JpaRepository<Category, Integer> {
     // 根据ID查询分类
-    Category getCategoryByCid(Long cid);
+    Category getCategoryByCid(Integer cid);
 
     // 查询所有分类并查询对应文章数
     @Query("select c.cid as cid, c.name as name," +

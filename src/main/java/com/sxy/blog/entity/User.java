@@ -1,5 +1,6 @@
 package com.sxy.blog.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sxy.blog.constant.Base;
 import lombok.AllArgsConstructor;
@@ -22,14 +23,19 @@ public class User extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "uid")
-    private Long uid;
+    private Integer uid;
 
     @Column(name = "username", unique = true)
     private String username;
 
+    @JsonIgnore
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @Column(name = "email")
+    private String email;
+
+    @JsonIgnoreProperties({"user"})
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private Set<Comment> comments = new LinkedHashSet<>();
 }

@@ -30,7 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category getCategoryByCid(Long cid) {
+    public Category getCategoryByCid(Integer cid) {
         return categoryRepository.getCategoryByCid(cid);
     }
 

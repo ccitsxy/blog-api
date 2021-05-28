@@ -32,7 +32,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Page<Article> findAllByCategory(Long cid, Integer page, Integer size) {
+    public Page<Article> findAllByCategory(Integer cid, Integer page, Integer size) {
         Category category = new Category();
         category.setCid(cid);
         Sort sort = Sort.by(Sort.Order.desc("aid"));
@@ -41,7 +41,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Page<Article> findAllByTag(Long tid, Integer page, Integer size) {
+    public Page<Article> findAllByTag(Integer tid, Integer page, Integer size) {
         Specification<Article> spec = (root, cq, cb) -> {
             Join<Article, Tag> join = root.join("tags", JoinType.LEFT);
             return cb.equal(join.get("tid"), tid);
@@ -66,7 +66,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Article getArticleByAid(Long aid) {
+    public Article getArticleByAid(Integer aid) {
         return articleRepository.getArticleByAid(aid);
     }
 

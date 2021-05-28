@@ -24,9 +24,6 @@ public class Comment extends Base {
     @Column(name = "coid")
     private Integer coid;
 
-    @Column(name = "author_id")
-    private Integer authorId;
-
     @Column(name = "text")
     private String text;
 
@@ -41,4 +38,9 @@ public class Comment extends Base {
     @JsonIgnoreProperties({"parent"})
     @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
     private Set<Comment> children = new LinkedHashSet<>();
+
+    @JsonIgnoreProperties({"parent","comments"})
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "uid", referencedColumnName = "uid")
+    private User user;
 }
