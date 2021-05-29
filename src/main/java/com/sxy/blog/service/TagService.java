@@ -13,4 +13,6 @@ public interface TagService {
     Tag getTagByTid(Integer tid);
 
     void saveTag(Tag tag);
+
+    void deleteTag(Integer tid);
 }

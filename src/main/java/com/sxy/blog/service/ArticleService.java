@@ -22,4 +22,6 @@ public interface ArticleService {
     List<Map<String, Object>> archiveAll();
 
     void saveArticle(Article article);
+
+    void deleteArticle(Integer aid);
 }

@@ -30,4 +30,9 @@ public class CommentServiceImpl implements CommentService {
         PageRequest pr = PageRequest.of(page, size, sort);
         return new JsonPage<>(commentRepository.findAll(spec, pr), pr);
     }
+
+    @Override
+    public void deleteComment(Integer coid) {
+        commentRepository.deleteById(coid);
+    }
 }

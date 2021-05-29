@@ -39,7 +39,7 @@ public class Comment extends Base {
     @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
     private Set<Comment> children = new LinkedHashSet<>();
 
-    @JsonIgnoreProperties({"parent","comments"})
+    @JsonIgnoreProperties({"parent", "comments"})
     @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "uid", referencedColumnName = "uid")
     private User user;

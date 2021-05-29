@@ -121,4 +121,14 @@ public class ArticleController {
     public void createOrUpdateArticle(@RequestBody Article article) {
         articleService.saveArticle(article);
     }
+
+    /**
+     * DELETE /article/{aid} : 删除文章
+     *
+     * @param aid 文章ID
+     */
+    @DeleteMapping("/{aid}")
+    public void deleteArticle(@PathVariable Integer aid){
+        articleService.deleteArticle(aid);
+    }
 }

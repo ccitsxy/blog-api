@@ -38,4 +38,9 @@ public class TagServiceImpl implements TagService {
     public void saveTag(Tag tag) {
         tagRepository.save(tag);
     }
+
+    @Override
+    public void deleteTag(Integer tid) {
+        tagRepository.deleteById(tid);
+    }
 }

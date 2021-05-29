@@ -38,4 +38,9 @@ public class CategoryServiceImpl implements CategoryService {
     public void saveCategory(Category category) {
         categoryRepository.saveAndFlush(category);
     }
+
+    @Override
+    public void deleteCategory(Integer cid) {
+        categoryRepository.deleteById(cid);
+    }
 }
