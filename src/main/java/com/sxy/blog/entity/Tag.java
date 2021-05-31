@@ -29,7 +29,7 @@ public class Tag extends Base {
     private Integer tid;
 
     @JsonView(TagInfo.class)
-    @Column(name = "name", unique = true)
+    @Column(name = "name", length = 20, unique = true)
     private String name;
     /*    @ManyToMany(targetEntity = Article.class)
         @JoinTable(name = "article_tag"

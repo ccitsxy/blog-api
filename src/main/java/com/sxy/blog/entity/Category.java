@@ -29,16 +29,18 @@ public class Category extends Base {
     private Integer cid;
 
     @JsonView(CategoryInfo.class)
-    @Column(name = "name", unique = true)
+    @Column(name = "name", length = 20, unique = true)
     private String name;
 
     // @OneToMany(targetEntity = Article.class)
     // @JoinColumn(name = "cid", referencedColumnName = "cid")
     // 放弃外键维护权， mappedBy = 对方关系的属性名称 category
-    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private Set<Article> articles = new LinkedHashSet<>();
 
-    public interface CategoryInfo extends BaseInfo{}
+    public interface CategoryInfo extends BaseInfo {
+    }
 
-    public interface CategoryDetail extends CategoryInfo, JsonPage.JsonViews {}
+    public interface CategoryDetail extends CategoryInfo, JsonPage.JsonViews {
+    }
 }

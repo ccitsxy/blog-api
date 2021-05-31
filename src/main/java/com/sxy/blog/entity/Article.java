@@ -36,7 +36,7 @@ public class Article extends Base {
 
     // 简介
     @JsonView(ArticleInfo.class)
-    @Column(name = "description", length = 100)
+    @Column(name = "description", length = 200)
     private String description;
 
     // Markdown 正文

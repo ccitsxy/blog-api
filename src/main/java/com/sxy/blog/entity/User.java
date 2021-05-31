@@ -25,17 +25,17 @@ public class User extends Base {
     @Column(name = "uid")
     private Integer uid;
 
-    @Column(name = "username", unique = true)
+    @Column(name = "username", length = 20, unique = true)
     private String username;
 
     @JsonIgnore
-    @Column(name = "password")
+    @Column(name = "password", length = 60)
     private String password;
 
     @Column(name = "email")
     private String email;
 
     @JsonIgnoreProperties({"user"})
-    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Comment> comments = new LinkedHashSet<>();
 }

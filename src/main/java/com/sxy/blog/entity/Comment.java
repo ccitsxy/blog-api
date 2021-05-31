@@ -24,7 +24,7 @@ public class Comment extends Base {
     @Column(name = "coid")
     private Integer coid;
 
-    @Column(name = "text")
+    @Column(name = "text", length = 200)
     private String text;
 
     @JoinColumn(name = "aid", referencedColumnName = "aid")
