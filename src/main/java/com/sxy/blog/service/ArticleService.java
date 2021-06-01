@@ -19,7 +19,7 @@ public interface ArticleService {
 
     Article getArticleByAid(Integer aid);
 
-    List<Map<String, Object>> archiveAll();
+    List<Map<String, Object>> findAllArchives();
 
     void saveArticle(Article article);
 

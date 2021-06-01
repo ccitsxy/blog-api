@@ -71,7 +71,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Map<String, Object>> archiveAll() {
+    public List<Map<String, Object>> findAllArchives() {
         return articleRepository.archiveArticles();
     }
 

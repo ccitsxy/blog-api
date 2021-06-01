@@ -37,7 +37,7 @@ public class CategoryController {
     @GetMapping("/{page}/{size}")
     public Page<Category> findAll(@PathVariable("page") Integer page,
                                   @PathVariable("size") Integer size) {
-        return categoryService.findAll(page-1, size);
+        return categoryService.findAll(page - 1, size);
     }
 
     /**
@@ -59,5 +59,15 @@ public class CategoryController {
     @PostMapping
     public void createOrUpdateCategory(@RequestBody Category category) {
         categoryService.saveCategory(category);
+    }
+
+    /**
+     * DELETE /category/{cid} : 删除分类
+     *
+     * @param cid 分类id (required)
+     */
+    @DeleteMapping("/{cid}")
+    public void deleteCategory(@PathVariable Integer cid) {
+        categoryService.deleteCategory(cid);
     }
 }

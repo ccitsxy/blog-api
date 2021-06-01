@@ -108,8 +108,8 @@ public class ArticleController {
      * @return 归档列表
      */
     @GetMapping("/archive")
-    public Object archiveAll() {
-        return articleService.archiveAll();
+    public Object findAllArchives() {
+        return articleService.findAllArchives();
     }
 
     /**

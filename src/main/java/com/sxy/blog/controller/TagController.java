@@ -60,4 +60,14 @@ public class TagController {
     public void createOrUpdateTag(@RequestBody Tag tag) {
         tagService.saveTag(tag);
     }
+
+    /**
+     * DELETE /tag/{tid} : 删除标签
+     *
+     * @param tid 标签id (required)
+     */
+    @DeleteMapping("/{tid}")
+    public void deleteCategory(@PathVariable Integer tid) {
+        tagService.deleteTag(tid);
+    }
 }
