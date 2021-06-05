@@ -18,7 +18,7 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "comments"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "article")
 public class Article extends Base {
@@ -61,7 +61,6 @@ public class Article extends Base {
     private Set<Tag> tags = new LinkedHashSet<>();
 
     // 评论
-    @JsonIgnoreProperties({"articles", "article"})
     @OneToMany(mappedBy = "article", fetch = FetchType.EAGER)
     private Set<Comment> comments = new LinkedHashSet<>();
 

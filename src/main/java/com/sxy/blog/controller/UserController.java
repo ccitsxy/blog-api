@@ -27,11 +27,6 @@ public class UserController {
         return userService.findAll(PageRequest.of(page, size));
     }
 
-    @GetMapping("/{uid}")
-    public User getUserByUid(@PathVariable("uid") Integer uid) {
-        return userService.getUserByUid(uid);
-    }
-
     @PostMapping
     public void createOrUpdateUser(@RequestBody User user) {
         userService.saveUser(user);
@@ -44,12 +39,21 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@RequestBody User user) {
-        System.out.println("user = " + user.getPassword());
         return userService.login(user.getUsername(), user.getPassword());
     }
 
     @GetMapping("/logout")
     public void logout() {
         StpUtil.logout();
+    }
+
+    /**
+     * POST /user/register : 注册用户
+     *
+     * @param user 用户
+     */
+    @PostMapping("/register")
+    public void register(@RequestBody User user) {
+        userService.saveUser(user);
     }
 }

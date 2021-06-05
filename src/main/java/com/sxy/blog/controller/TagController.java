@@ -58,6 +58,7 @@ public class TagController {
      */
     @PostMapping
     public void createOrUpdateTag(@RequestBody Tag tag) {
+        System.out.println("tag = " + tag.getTid());
         tagService.saveTag(tag);
     }
 
