@@ -34,8 +34,4 @@ public class User extends Base {
 
     @Column(name = "email")
     private String email;
-
-    @JsonIgnoreProperties({"user"})
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private Set<Comment> comments = new LinkedHashSet<>();
 }

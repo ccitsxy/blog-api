@@ -60,10 +60,6 @@ public class Article extends Base {
             , inverseJoinColumns = {@JoinColumn(name = "tid", referencedColumnName = "tid")})
     private Set<Tag> tags = new LinkedHashSet<>();
 
-    // 评论
-    @OneToMany(mappedBy = "article", fetch = FetchType.EAGER)
-    private Set<Comment> comments = new LinkedHashSet<>();
-
     public interface ArticleList extends BaseInfo {
     }
 
