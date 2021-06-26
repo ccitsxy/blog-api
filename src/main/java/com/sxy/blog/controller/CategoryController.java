@@ -1,6 +1,5 @@
 package com.sxy.blog.controller;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import com.sxy.blog.entity.Category;
 import com.sxy.blog.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,6 @@ public class CategoryController {
      * @param size 分页大小 (required)
      * @return 标签列表 (分页)
      */
-    @JsonView(Category.CategoryDetail.class)
     @GetMapping("/{page}/{size}")
     public Page<Category> findAll(@PathVariable("page") Integer page,
                                   @PathVariable("size") Integer size) {

@@ -1,6 +1,5 @@
 package com.sxy.blog.controller;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import com.sxy.blog.entity.Article;
 import com.sxy.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ public class ArticleController {
      *
      * @return 文章列表
      */
-    @JsonView(Article.ArticleList.class)
     @GetMapping
     public List<Article> findAllArticles() {
         return articleService.findAll();
@@ -34,7 +32,6 @@ public class ArticleController {
      * @param size 分页大小 (required)
      * @return 文章列表 (分页)
      */
-    @JsonView(Article.ArticleInfo.class)
     @GetMapping("/{page}/{size}")
     public Page<Article> findAllArticles(@PathVariable("page") Integer page,
                                                          @PathVariable("size") Integer size) {
@@ -49,7 +46,6 @@ public class ArticleController {
      * @param size 分页大小 (required)
      * @return 文章列表 (分页)
      */
-    @JsonView(Article.ArticleInfo.class)
     @GetMapping("/category/{cid}/{page}/{size}")
     public Page<Article> findArticlesByCategory(@PathVariable("cid") Integer cid,
                                                 @PathVariable("page") Integer page,
@@ -65,7 +61,6 @@ public class ArticleController {
      * @param size 分页大小 (required)
      * @return 文章列表 (分页)
      */
-    @JsonView(Article.ArticleInfo.class)
     @GetMapping("/tag/{tid}/{page}/{size}")
     public Page<Article> findAllByTag(@PathVariable("tid") Integer tid,
                                       @PathVariable("page") Integer page,
@@ -82,7 +77,6 @@ public class ArticleController {
      * @param size  分页大小 (required)
      * @return 文章列表 (分页)
      */
-    @JsonView(Article.ArticleInfo.class)
     @GetMapping("/archive/{year}/{month}/{page}/{size}")
     public Page<Article> findAllByArchive(@PathVariable("year") Integer year,
                                           @PathVariable("month") Integer month,

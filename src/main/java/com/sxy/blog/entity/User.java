@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Setter
 @Getter
@@ -22,16 +20,14 @@ import java.util.Set;
 public class User extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "uid")
     private Integer uid;
 
-    @Column(name = "username", length = 20, unique = true)
+    @Column( length = 20, unique = true)
     private String username;
 
     @JsonBackReference // 序列化时不显示
-    @Column(name = "password", length = 60)
+    @Column(length = 60)
     private String password;
 
-    @Column(name = "email")
     private String email;
 }
