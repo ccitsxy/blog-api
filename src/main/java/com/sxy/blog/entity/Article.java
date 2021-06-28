@@ -31,9 +31,9 @@ public class Article extends Base {
     @Column(length = 200)
     private String description;
 
-    // Markdown 正文
+    // 内容
     @Column(columnDefinition = "longtext")
-    private String markdown;
+    private String content;
 
     // 分类
     @ManyToOne(targetEntity = Category.class, fetch = FetchType.EAGER)

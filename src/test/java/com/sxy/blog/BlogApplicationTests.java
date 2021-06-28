@@ -1,8 +1,10 @@
 package com.sxy.blog;
 
-import com.sxy.blog.util.PasswordUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
+import oshi.hardware.HardwareAbstractionLayer;
 
 
 @SpringBootTest
@@ -10,8 +12,10 @@ class BlogApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println("PasswordUtil.Encrypt(\"admin\") = " + PasswordUtil.Encrypt("admin"));
-        System.out.println("PasswordUtil.Decrypt(\"admin\",\"$2a$10$1IO6SRybWwfDtA.dJFGiAeknOBtRY7ckua.U3lz7wt9bJLUWZMiBy\") = " + PasswordUtil.Decrypt("admin", "$2a$10$1IO6SRybWwfDtA.dJFGiAeknOBtRY7ckua.U3lz7wt9bJLUWZMiBy"));
+        SystemInfo si = new SystemInfo();
+        HardwareAbstractionLayer hal = si.getHardware();
+        CentralProcessor cpu = hal.getProcessor();
+        System.out.println("cpu = " + cpu);
     }
 
 }
