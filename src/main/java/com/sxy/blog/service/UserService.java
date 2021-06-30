@@ -19,5 +19,7 @@ public interface UserService {
 
     void deleteUser(Integer uid);
 
+    void register(String username, String password);
+
     String login(String username, String password);
 }

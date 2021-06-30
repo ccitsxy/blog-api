@@ -28,6 +28,4 @@ public class User extends Base {
     @JsonBackReference // 序列化时不显示
     @Column(length = 60)
     private String password;
-
-    private String email;
 }

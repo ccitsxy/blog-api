@@ -48,6 +48,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void register(String username, String password) {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(PasswordUtil.Encrypt(password));
+        saveUser(user);
+    }
+
+    @Override
     public String login(String username, String password) {
         User user = userRepository.getUserByUsername(username);
         if (PasswordUtil.Decrypt(password, user.getPassword())) {
